@@ -1,0 +1,245 @@
+/* =========================================================================
+   bubble-pop · Design Tokens  v0.2（2026-09-24：字體定案 B、主色改藍紫）
+   飽和糖果色 × 大圓角／圓形 × 全面動感
+   -------------------------------------------------------------------------
+   結構：
+     1. Primitive  原始值（色票、字體、尺寸）—— 不直接用在元件上
+     2. Semantic   語意 token（背景、文字、強調、邊框…）—— 元件只用這一層
+     3. Dark mode  深色模式只覆寫 semantic 層
+     4. Motion     時間、曲線、循環週期（GSAP 對照寫在註解）
+   斷點（CSS 變數無法用在 @media，僅供參考）：
+     --bp-sm: 640px   手機 ≤ 640
+     --bp-md: 1024px  平板 641–1024
+     --bp-lg: 1280px  桌機 ≥ 1025，內容最大寬 1280
+   ========================================================================= */
+
+:root {
+  /* ---------- 1. Primitive · Color --------------------------------------
+     糖果色以 OKLCH 調色：色相各自最飽和，明度依色相微調（黃較亮、紫較深），
+     讓 6 色放在一起視覺重量接近。
+     fill ＝ 色塊／圓形／按鈕底色（上面放深色文字 ink，對比皆 ≥ 4.5）
+     deep ＝ 可當文字色的深色版（在 bg 上對比皆 ≥ 5）
+     soft ＝ 淡底色（卡片、區塊背景）                                         */
+  --candy-orange:      #FE843D;
+  --candy-orange-deep: #9E4500;
+  --candy-orange-soft: #FFEADF;
+
+  --candy-pink:        #FF5994;
+  --candy-pink-deep:   #AB285C;
+  --candy-pink-soft:   #FEE8ED;
+
+  --candy-violet:      #816DFF;
+  --candy-violet-deep: #5D4DBE;
+  --candy-violet-soft: #ECEDFE;
+
+  --candy-mint:        #00DEAA;
+  --candy-mint-deep:   #057558;
+  --candy-mint-soft:   #D3F9E9;
+
+  --candy-yellow:      #FECF00;
+  --candy-yellow-deep: #786101;
+  --candy-yellow-soft: #F9EECD;
+
+  --candy-sky:         #22B8FB;
+  --candy-sky-deep:    #006C97;
+  --candy-sky-soft:    #DEF2FE;
+
+  /* 中性色：帶一點紫調的墨色 + 暖白，讓糖果色不刺眼 */
+  --neutral-0:   #FFFFFF;
+  --neutral-25:  #FEF9F3;   /* 暖白底 */
+  --neutral-50:  #FAF1E7;
+  --neutral-100: #F0E6DC;
+  --neutral-200: #DDD3CB;
+  --neutral-400: #9A93A6;
+  --neutral-600: #5E5872;
+  --neutral-800: #2E2A42;
+  --neutral-900: #1A172C;   /* ink */
+  --neutral-950: #110F1E;   /* 深色模式底 */
+
+  /* ---------- 1. Primitive · Typography ---------------------------------
+     定案組合 B「清爽現代」：
+       標題 Outfit（幾何圓形）＋ 思源黑體 Noto Sans TC
+       內文 Nunito（圓端無襯線）＋ 思源黑體 Noto Sans TC
+     字體檔在 assets/fonts/，本機離線可用；思源黑體收 400／700 兩個字重      */
+  --font-display: "Outfit", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --font-body:    "Nunito", "Noto Sans TC", "PingFang TC", system-ui, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+
+  /* 字級：流體尺寸，360px → 1280px 之間線性縮放 */
+  --fs-display: clamp(3rem, 1.6rem + 6.2vw, 6.5rem);   /* Hero 大名 48 → 104 */
+  --fs-h1:      clamp(2.25rem, 1.5rem + 3.3vw, 4rem);   /* 區塊標題 36 → 64 */
+  --fs-h2:      clamp(1.625rem, 1.25rem + 1.7vw, 2.5rem);/* 作品標題 26 → 40 */
+  --fs-h3:      clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);/* 卡片標題 20 → 26 */
+  --fs-lead:    clamp(1.125rem, 1.03rem + 0.4vw, 1.375rem);
+  --fs-body:    1.0625rem;  /* 17px */
+  --fs-small:   0.9375rem;  /* 15px */
+  --fs-caption: 0.8125rem;  /* 13px，chip／標籤 */
+
+  --lh-tight: 1.05;
+  --lh-snug:  1.25;
+  --lh-body:  1.7;          /* 中文內文需要較寬行高 */
+  --ls-tight: -0.02em;
+  --ls-wide:  0.08em;
+
+  /* ---------- 1. Primitive · Radius（視覺主軸：略大圓角＋圓形） ---------- */
+  --radius-xs:  8px;
+  --radius-sm:  14px;
+  --radius-md:  20px;   /* 輸入框、小卡 */
+  --radius-lg:  28px;   /* 一般卡片 */
+  --radius-xl:  40px;   /* 大卡片、作品圖框 */
+  --radius-2xl: 56px;   /* 區塊容器、Hero 面板 */
+  --radius-pill: 999px; /* 按鈕、chip */
+  --radius-circle: 50%;
+
+  /* ---------- 1. Primitive · Space（4px 基準） --------------------------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px;  --space-6: 24px;  --space-8: 32px;  --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
+  --space-32: 128px;
+  --section-gap: clamp(80px, 5rem + 6vw, 176px);  /* 區塊之間 */
+  --gutter:      clamp(16px, 4vw, 48px);            /* 左右留白（手機 16px） */
+  --container:   1280px;
+
+  /* ---------- 1. Primitive · Size -------------------------------------- */
+  --size-icon-sm: 20px;
+  --size-icon-md: 28px;
+  --size-icon-lg: 44px;
+  --size-avatar-hero: clamp(220px, 40vw, 440px);  /* Hero 圓形人像 */
+  --size-cursor: 18px;         /* 自訂游標（預設） */
+  --size-cursor-hover: 64px;   /* 游標移到可互動元素時 */
+  --tap-min: 44px;             /* 觸控最小點擊區 */
+
+  /* ---------- 2. Semantic · Light（預設） -------------------------------- */
+  --color-bg:        var(--neutral-25);
+  --color-bg-alt:    var(--neutral-50);
+  --color-surface:   var(--neutral-0);
+  --color-surface-2: var(--neutral-50);
+  --color-border:    var(--neutral-100);
+  --color-border-strong: var(--neutral-900);
+
+  --color-text:       var(--neutral-900);
+  --color-text-muted: var(--neutral-600);
+  --color-text-subtle:var(--neutral-400);
+  --color-text-on-candy: var(--neutral-900);   /* 糖果色塊上一律用深色字 */
+
+  --color-primary:      var(--candy-violet);   /* 主色：CTA、強調、連結 */
+  --color-primary-deep: var(--candy-violet-deep);
+  --color-primary-soft: var(--candy-violet-soft);
+  --color-secondary:    var(--candy-pink);
+  --color-link:         var(--candy-violet-deep);
+  --color-focus:        var(--candy-violet);
+
+  /* 區塊代表色：每個區塊一個主色，做成循環裝飾、標題圓點、進度指示 */
+  --section-about:      var(--candy-orange);
+  --section-experience: var(--candy-sky);
+  --section-skills:     var(--candy-mint);
+  --section-expertise:  var(--candy-yellow);
+  --section-works:      var(--candy-pink);
+  --section-contact:    var(--candy-violet);
+
+  /* ---------- 2. Semantic · Elevation ---------------------------------- */
+  /* soft：柔和漂浮感；pop：俏皮的實心偏移陰影（hover 時使用） */
+  --shadow-soft-sm: 0 2px 8px rgb(26 23 44 / .06), 0 1px 2px rgb(26 23 44 / .04);
+  --shadow-soft-md: 0 12px 32px -8px rgb(26 23 44 / .12), 0 4px 8px rgb(26 23 44 / .04);
+  --shadow-soft-lg: 0 32px 64px -16px rgb(26 23 44 / .18);
+  --shadow-pop:     0 6px 0 0 var(--color-border-strong);
+  --shadow-pop-lg:  0 10px 0 0 var(--color-border-strong);
+  --border-pop:     2.5px solid var(--color-border-strong);
+
+  /* ---------- 2. Semantic · Layer -------------------------------------- */
+  --z-deco: 0;  --z-content: 1;  --z-nav: 50;  --z-overlay: 80;
+  --z-transition: 90;  --z-cursor: 100;
+
+  /* ---------- 4. Motion ------------------------------------------------
+     GSAP 對照：
+       --ease-out      ≈ "expo.out"
+       --ease-in-out   ≈ "power3.inOut"
+       --ease-spring   ≈ "back.out(1.7)"
+       --ease-bounce   ≈ "elastic.out(1, 0.5)"（CSS 只能近似）            */
+  --dur-instant: 120ms;  /* 按下回饋 */
+  --dur-fast:    220ms;  /* hover、顏色變化 */
+  --dur-base:    420ms;  /* 元件進出、展開 */
+  --dur-slow:    700ms;  /* 區塊進場 */
+  --dur-page:    950ms;  /* 作品詳情頁圓形擴張轉場 */
+  --stagger:     70ms;   /* 列表依序進場間隔 */
+
+  --ease-out:    cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out: cubic-bezier(.65, 0, .35, 1);
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-bounce: cubic-bezier(.68, -0.6, .32, 1.6);
+
+  /* 循環動態週期 */
+  --loop-orbit:   28s;   /* Hero 圓點繞行 */
+  --loop-float:   6s;    /* 裝飾圓漂浮 */
+  --loop-morph:   14s;   /* 背景色塊變形 */
+  --loop-marquee: 32s;   /* 跑馬燈 */
+  --loop-pulse:   2.4s;  /* 呼吸光暈、提示點 */
+  --loop-spin:    20s;   /* 旋轉文字圓環 */
+
+  /* 互動強度 */
+  --magnet-strength: 0.35;   /* 磁吸按鈕：位移 = 游標距離 × 強度 */
+  --parallax-depth:  24px;   /* 滑鼠視差最大位移 */
+  --hover-lift:      -4px;
+  --press-scale:     .96;
+  --loop-play:       running;  /* 循環動畫統一用 animation-play-state: var(--loop-play) */
+
+  color-scheme: light;
+}
+
+/* ---------- 3. Dark mode ----------------------------------------------
+   跟隨系統；手動切換時在 <html> 加 data-theme="dark" / "light"            */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --candy-orange: #FE9A65; --candy-pink: #FF77A2; --candy-violet: #8D80FF;
+    --candy-mint: #49E9B8;   --candy-yellow: #FFDB69; --candy-sky: #55C4FE;
+    --candy-orange-soft: #462311; --candy-pink-soft: #46202B; --candy-violet-soft: #2B294B;
+    --candy-mint-soft: #013728;   --candy-yellow-soft: #392C01; --candy-sky-soft: #043247;
+  /* deep 在深色模式改為亮色，才能繼續當「彩色文字」用 */
+  --candy-orange-deep: #FFB48A; --candy-pink-deep: #FF9DBD; --candy-violet-deep: #B3A9FF;
+  --candy-mint-deep: #6FF0C6;   --candy-yellow-deep: #FFE08A; --candy-sky-deep: #8AD6FF;
+
+    --color-bg: var(--neutral-950);  --color-bg-alt: #17142A;
+    --color-surface: #211D35;        --color-surface-2: #2A2540;
+    --color-border: #332E4A;         --color-border-strong: #F5EFFF;
+    --color-text: #F7F3FF;           --color-text-muted: #BDB6D2;  --color-text-subtle: #8A83A2;
+    --color-primary-deep: var(--candy-violet-deep); --color-link: #B3A9FF;
+    --shadow-soft-sm: 0 2px 8px rgb(0 0 0 / .3);
+    --shadow-soft-md: 0 12px 32px -8px rgb(0 0 0 / .5);
+    --shadow-soft-lg: 0 32px 64px -16px rgb(0 0 0 / .6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --candy-orange: #FE9A65; --candy-pink: #FF77A2; --candy-violet: #8D80FF;
+  --candy-mint: #49E9B8;   --candy-yellow: #FFDB69; --candy-sky: #55C4FE;
+  --candy-orange-soft: #462311; --candy-pink-soft: #46202B; --candy-violet-soft: #2B294B;
+  --candy-mint-soft: #013728;   --candy-yellow-soft: #392C01; --candy-sky-soft: #043247;
+  /* deep 在深色模式改為亮色，才能繼續當「彩色文字」用 */
+  --candy-orange-deep: #FFB48A; --candy-pink-deep: #FF9DBD; --candy-violet-deep: #B3A9FF;
+  --candy-mint-deep: #6FF0C6;   --candy-yellow-deep: #FFE08A; --candy-sky-deep: #8AD6FF;
+
+  --color-bg: var(--neutral-950);  --color-bg-alt: #17142A;
+  --color-surface: #211D35;        --color-surface-2: #2A2540;
+  --color-border: #332E4A;         --color-border-strong: #F5EFFF;
+  --color-text: #F7F3FF;           --color-text-muted: #BDB6D2;  --color-text-subtle: #8A83A2;
+  --color-primary-deep: var(--candy-violet-deep); --color-link: #B3A9FF;
+  --shadow-soft-sm: 0 2px 8px rgb(0 0 0 / .3);
+  --shadow-soft-md: 0 12px 32px -8px rgb(0 0 0 / .5);
+  --shadow-soft-lg: 0 32px 64px -16px rgb(0 0 0 / .6);
+  color-scheme: dark;
+}
+
+/* ---------- Reduced motion ---------------------------------------------
+   系統開啟「減少動態效果」：停掉循環與視差，保留淡入淡出（時間縮短）       */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-slow: 200ms;  --dur-page: 300ms;  --stagger: 0ms;
+    --magnet-strength: 0;  --parallax-depth: 0px;  --hover-lift: 0px;
+    --loop-play: paused;
+  }
+}

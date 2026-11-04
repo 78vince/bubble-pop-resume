@@ -196,7 +196,7 @@
   CATS.forEach(c => visible(c.items).forEach(w => WORKS.push({ ...w, cat: c })));
   const featured = WORKS.find(w => w.featured) || WORKS[0];
   if (featured) WORKS = [featured, ...WORKS.filter(w => w !== featured)];
-  const tagsOf = w => { const pick = lang === 'en' ? w.tags_en : w.tags; if (!pick) return []; return (Array.isArray(pick) ? pick : String(pick).split(/[,，、]/)).map(s => s.trim()).filter(Boolean); };
+  const tagsOf = w => { const pick = (lang === 'en' && w.tags_en) ? w.tags_en : w.tags; if (!pick) return []; return (Array.isArray(pick) ? pick : String(pick).split(/[,，、]/)).map(s => s.trim()).filter(Boolean); };
 
   function renderWorks() {
     $('#filters').insertAdjacentHTML('beforeend', `<button data-filter="all" aria-pressed="true">${span(T.zh.all, T.en.all)}<small>${WORKS.length}</small></button>` +

@@ -7,12 +7,11 @@ window.RESUME_DATA = {
   },
   "contact": {
     "email": "78vince@gmail.com",
-    "phone": "",
     "location": "",
     "links": [
       {
-        "label": "小禮堂",
-        "url": "https://strange-strengthening-552242.framer.app/"
+        "label": "小禮",
+        "url": "https://xiaoli-beta.vercel.app/"
       },
       {
         "label": "貓貓 Live Show",
@@ -104,8 +103,7 @@ window.RESUME_DATA = {
         "items": [
           "Antigravity",
           "Gemini",
-          "Claude Cowork",
-          "Claude Design"
+          "Claude"
         ]
       },
       {
@@ -114,7 +112,6 @@ window.RESUME_DATA = {
         "items": [
           "Photoshop",
           "Illustrator",
-          "After Effects",
           "Figma",
           "Framer"
         ]
@@ -122,8 +119,6 @@ window.RESUME_DATA = {
     ]
   },
   "services": {
-    "zh": "需求討論 → 報價 → 提案與修改 → 交付\n\n1. 需求討論：了解專案目標、風格喜好與使用情境\n2. 報價：依專案範圍與內容提供報價與時程規劃\n3. 提案與修改：提出設計提案，依回饋進行修改調整\n4. 交付：確認定稿後，提供完整可用檔案與後續使用說明",
-    "en": "Requirement Discussion → Quotation → Proposal & Revisions → Delivery\n\n1. Requirement Discussion: Understand project goals, style preferences, and use context\n2. Quotation: Provide pricing and timeline based on project scope and content\n3. Proposal & Revisions: Present design proposals and revise based on feedback\n4. Delivery: Provide complete, ready-to-use files and usage notes upon final confirmation",
     "items": [
       {
         "title_zh": "品牌視覺設計",
@@ -183,6 +178,7 @@ window.RESUME_DATA = {
             "cover": "assets/img-works/veltrixia-brand/veltrixia_logo_concept.jpg",
             "link": "https://veltrixia.com",
             "tags": "品牌商標, 網站設計",
+            "tags_en": "Logo Design, Website Design",
             "visible": true,
             "featured": false,
             "images": [
@@ -201,6 +197,7 @@ window.RESUME_DATA = {
             "cover": "assets/img-works/boccia/BrandDeck-01-Title.jpg",
             "link": "",
             "tags": "活動視覺",
+            "tags_en": "Event Visuals",
             "visible": true,
             "featured": false,
             "images": [
@@ -235,6 +232,28 @@ window.RESUME_DATA = {
             ],
             "link": "",
             "tags": "圖形設計, 符號設計",
+            "tags_en": "Graphic Design, Icon Design",
+            "visible": true,
+            "featured": false
+          },
+          {
+            "id": "74235r6i",
+            "title_zh": "企業蛇年電子賀卡",
+            "title_en": "Year of the Snake E-Card",
+            "desc_zh": "為 Cooler Master 設計的企業蛇年電子賀卡。取用主打機殼產品最具辨識度的造型符號，轉化為蛇形圖騰，讓賀年氛圍與品牌特色結合；再將重新構成的圖像導回產品宣傳照，形成「節慶問候 × 產品推廣」的雙重效果。",
+            "desc_en": "Corporate Lunar New Year e-card for Cooler Master. Distinctive geometric lines from the flagship PC chassis are transformed into a serpentine motif, merging festive warmth with brand identity. The recomposed graphics were then carried into product promotional photos, linking the card and the product for both seasonal greetings and product promotion.",
+            "cover": "assets/img-works/CM-snake/snake_ecard_01.png",
+            "images": [
+              "assets/img-works/CM-snake/snake_ecard_01.png",
+              "assets/img-works/CM-snake/snake_ecard_02.png",
+              "assets/img-works/CM-snake/snake_ecard_03.png",
+              "assets/img-works/CM-snake/snake_ecard_04.png",
+              "assets/img-works/CM-snake/snake_ecard_05.png",
+              "assets/img-works/CM-snake/snake_ecard_06.png"
+            ],
+            "link": "",
+            "tags": "企業電子賀卡, 品牌圖形, 農曆新年",
+            "tags_en": "Corporate E-Card, Brand Graphics, Lunar New Year",
             "visible": true,
             "featured": false
           }
@@ -254,6 +273,7 @@ window.RESUME_DATA = {
             "cover": "assets/img-works/mao/mao_wallpaper_2017_calendar02.png",
             "link": "https://maomao-live-show.vercel.app/",
             "tags": "插畫, 角色設計",
+            "tags_en": "Illustration, Character Design",
             "visible": true,
             "featured": false,
             "images": [
@@ -278,6 +298,7 @@ window.RESUME_DATA = {
             ],
             "link": "",
             "tags": "品牌識別, 吉祥物插畫",
+            "tags_en": "Brand Identity, Mascot Illustration",
             "visible": true,
             "featured": false
           }
@@ -296,7 +317,8 @@ window.RESUME_DATA = {
             "desc_en": "Extending the Veltrixia brand identity, designed the official website interface using a dark palette with tech-forward imagery and clean layout to present six surface performance solution categories — corrosion protection, heat/UV resistance, insulation & waterproofing, dust & contamination protection, mold & pest resistance, and thermal management — conveying engineering-validated, professional reliability.",
             "cover": "assets/img-works/veltrixia-web/slide_1.jpg",
             "link": "",
-            "tags": "網頁設計",
+            "tags": "網頁設計, AI 開發",
+            "tags_en": "Web Design, AI Development",
             "visible": true,
             "featured": false,
             "images": [
@@ -304,30 +326,82 @@ window.RESUME_DATA = {
               "assets/img-works/veltrixia-web/slide_2.jpg",
               "assets/img-works/veltrixia-web/slide_3.jpg"
             ]
-          }
-        ]
-      },
-      {
-        "id": "rta74gqv",
-        "name_zh": "AI 應用開發",
-        "name_en": "AI Application Development",
-        "items": [
+          },
           {
-            "id": "dttzsxrv",
             "title_zh": "English for Kids - 每天玩一點英語！",
             "title_en": "English for Kids — A Little English Every Day!",
             "desc_zh": "市面英語 App 多偏向幼兒或成人，較難貼合小學生的生活與課業。因此我為國小生自製了英語學習平台，結合適齡單字與文法，每天輕鬆玩、依程度調整。",
             "desc_en": "Most English-learning apps on the market skew toward either young children or adults, making it hard to fit elementary schoolers' daily lives and coursework. So I built a dedicated English-learning platform for them, combining age-appropriate vocabulary and grammar into short daily sessions that adapt to each learner's level.",
             "cover": "assets/img-works/EK/ek_kid_learning_macbook.jpg",
             "link": "https://78vince.github.io/english-for-kids/",
-            "tags": "AI 應用",
+            "tags": "網頁設計, AI 開發",
+            "tags_en": "Web Design, AI Development",
             "visible": true,
             "featured": false,
             "images": [
               "assets/img-works/EK/ek_kid_learning_macbook.jpg",
               "assets/img-works/EK/ek_platform_showcase.jpg",
               "assets/img-works/EK/badge_design_explainer.jpg"
-            ]
+            ],
+            "id": "wimv660b"
+          },
+          {
+            "title_zh": "VK Playground",
+            "title_en": "VK Playground — Gamified Interactive Resume",
+            "desc_zh": "結合 2D 像素遊戲美學與現代前端技術的沉浸式互動履歷，具備大地圖探索、NPC 對話、技能樹與任務成就系統，打破傳統靜態條列式展示。",
+            "desc_en": "An immersive interactive resume merging 2D pixel-art RPG mechanics with modern web architecture — featuring open-world exploration, NPC dialogues, skill trees, and quest achievements.",
+            "cover": "assets/img-works/vk-playground/01_cover.png",
+            "link": "https://78vince.github.io/vk-playground/",
+            "tags": "遊戲化, 互動網頁, AI 開發",
+            "tags_en": "Gamification, Interactive Web, AI Development",
+            "visible": true,
+            "featured": false,
+            "images": [
+              "assets/img-works/vk-playground/01_cover.png",
+              "assets/img-works/vk-playground/02_chapter_navigation.png",
+              "assets/img-works/vk-playground/03_experience_waystation.png",
+              "assets/img-works/vk-playground/04_skills_and_tools.png",
+              "assets/img-works/vk-playground/05_works_gallery.png"
+            ],
+            "id": "nha0ecvg"
+          },
+          {
+            "title_zh": "泡泡糖果 (Bubble Pop)",
+            "title_en": "Bubble Pop — Dynamic Pastel Resume Theme",
+            "desc_zh": "採用活潑吸睛的粉彩色調（Pastel Colors）與動態卡片流動排版，搭配 GSAP 平滑滾動與浮動泡泡微交互，展現親和力與視覺層次。",
+            "desc_en": "A dynamic one-page resume theme featuring playful pastel candy tones, smooth GSAP scrolling, floating bubble micro-interactions, and fluid modular card layouts.",
+            "cover": "assets/img-works/bubble-pop/01_cover.png",
+            "link": "https://78vince.github.io/bubble-pop-resume/",
+            "tags": "動態網頁, 前端動效, 視覺設計, AI 開發",
+            "tags_en": "Motion Web, Front-end Animation, Visual Design, AI Development",
+            "visible": true,
+            "featured": false,
+            "images": [
+              "assets/img-works/bubble-pop/01_cover.png",
+              "assets/img-works/bubble-pop/02_desktop_scroll.png"
+            ],
+            "id": "huvltixo"
+          },
+          {
+            "title_zh": "小貓航海 (Cat Voyage)",
+            "title_en": "Cat Voyage — 3D Sailing Resume",
+            "desc_zh": "把履歷變成一片可以航行的群島：跟著暹羅貓船長貓貓撐竹筏出海，靠岸登島閱讀經歷、技能、服務與作品，集滿印章還能找到祕密小島。以 three.js 基本幾何體與卡通著色打造低多邊形 3D 場景，搭配自訂設計系統、日夜循環、中英切換與手機版操作。",
+            "desc_en": "A résumé you can sail: board a bamboo raft with Captain Meow, a Siamese cat, and land on little islands to read the experience, skills, services and portfolio — collect every stamp to find a secret isle. The low-poly 3D world is built from basic three.js shapes with toon shading, paired with a custom design system, a day–night cycle, a Chinese/English toggle and touch controls for phones.",
+            "cover": "assets/img-works/cat-voyage/01_cover.png",
+            "link": "https://78vince.github.io/cat-voyage-resume/",
+            "tags": "3D 互動網頁, 遊戲化, AI 開發",
+            "tags_en": "3D Interactive Web, Gamification, AI Development",
+            "visible": true,
+            "featured": false,
+            "images": [
+              "assets/img-works/cat-voyage/01_cover.png",
+              "assets/img-works/cat-voyage/02_boarding_pass.png",
+              "assets/img-works/cat-voyage/03_works_gallery.png",
+              "assets/img-works/cat-voyage/04_funfair.png",
+              "assets/img-works/cat-voyage/05_sketchbook.png",
+              "assets/img-works/cat-voyage/06_mobile.png"
+            ],
+            "id": "w8btmdwh"
           }
         ]
       }

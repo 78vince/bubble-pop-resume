@@ -465,6 +465,14 @@
     $$('#filters button').forEach(b => b.addEventListener('click', () => { applyFilter(b.dataset.filter); b.scrollIntoView({ inline: 'center', block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }));
     $$('#grid .card').forEach(c => c.addEventListener('click', () => openWork(c.dataset.id, c)));
     requestAnimationFrame(() => moveFilterKnob(true));
+    // 手機：篩選列可橫向捲動，右側漸層提示還有選項；捲到底就拿掉漸層
+    const fl = $('#filters');
+    if (fl) {
+      const edge = () => fl.classList.toggle('is-end', fl.scrollLeft + fl.clientWidth >= fl.scrollWidth - 4);
+      fl.addEventListener('scroll', edge, { passive: true });
+      addEventListener('resize', edge, { passive: true });
+      requestAnimationFrame(edge);
+    }
   }
 
   /* =======================================================================

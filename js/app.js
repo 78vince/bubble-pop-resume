@@ -462,7 +462,7 @@
     } else if (ST) ST.refresh();
   }
   function bindWorks() {
-    $$('#filters button').forEach(b => b.addEventListener('click', () => { applyFilter(b.dataset.filter); b.scrollIntoView({ inline: 'center', block: 'nearest', behavior: RM ? 'auto' : 'smooth' }); }));
+    $$('#filters button').forEach(b => b.addEventListener('click', () => { applyFilter(b.dataset.filter); const fl = b.parentElement; fl.scrollTo({ left: b.offsetLeft - (fl.clientWidth - b.offsetWidth) / 2, behavior: RM ? 'auto' : 'smooth' });   /* 只捲篩選列本身（scrollIntoView 在 Safari 會連整頁一起橫移） */ }));
     $$('#grid .card').forEach(c => c.addEventListener('click', () => openWork(c.dataset.id, c)));
     requestAnimationFrame(() => moveFilterKnob(true));
     // 手機：篩選列可橫向捲動，右側漸層提示還有選項；捲到底就拿掉漸層
